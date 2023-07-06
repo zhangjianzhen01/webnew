@@ -51,7 +51,6 @@ export default {
             type: 'success',
             showClose: true,
             duration: 3000,
-            customClass: 'success-message' // 自定义样式类名
           });
         } else {
           this.$message({
@@ -74,10 +73,5 @@ export default {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
-}
-
-.success-message {
-  background-color: green !important;
-  color: white !important;
 }
 </style>
