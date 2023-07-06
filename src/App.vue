@@ -1,83 +1,65 @@
 <template>
   <div class="container">
-    <el-form>
-      <el-form-item label="选择操作">
-        <!-- 根据options数组动态生成下拉选项 -->
-        <el-select v-model="selectedOption" placeholder="请选择操作">
-          <el-option
-              v-for="option in options"
-              :key="option.id"
-              :label="option.label"
-              :value="option.id"
-          ></el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item>
-        <!-- 点击按钮触发handleSubmit方法 -->
-        <el-button type="primary" @click="handleSubmit">提交</el-button>
-      </el-form-item>
-    </el-form>
+    <el-select v-model="selectedOption" placeholder="选择操作" class="select-option">
+      <el-option v-for="option in options" :key="option.id" :label="option.label" :value="option.id"></el-option>
+    </el-select>
+    <div class="button-container">
+      <el-button type="primary" @click="handleSubmit" class="submit-button">提交</el-button>
+    </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
+import { ElSelect, ElOption, ElButton } from 'element-plus';
 
 export default {
-  name: 'NewOrderSelect',
+  name: "NewOrderSelect",
+  components: {
+    ElSelect,
+    ElOption,
+    ElButton
+  },
   data() {
     return {
       options: [
         { label: '新建采购订单', id: 1 },
         { label: '新建资金平台', id: 2 },
-        { label: '新建销售订单', id: 3 },
+        { label: '新建销售订单', id: 3 }
       ],
-      selectedOption: null,
+      selectedOption: null
     };
   },
   methods: {
-    async handleSubmit() {
-      // 构建要发送给后端的数据
+    handleSubmit() {
       const body = { id: this.selectedOption };
-
-      try {
-        // 向后端发送请求，这里使用了axios作为示例
-        const response = await axios.post('http://localhost:8000/api/xz', body);
-
-        // 根据不同的响应消息类型显示不同的提示消息
-        if (response.data.message === '新建销售订单成功') {
-          this.$message({
-            message: response.data.message,
-            type: 'success',
-            showClose: true,
-            duration: 3000,
-            customClass: 'success-message' // 自定义样式类名
+      axios.post('http://localhost:8000/api/xz', body)
+          .then(response => {
+            console.log(response.data);
+          })
+          .catch(error => {
+            console.error(error);
           });
-        } else {
-          this.$message({
-            message: response.data.message,
-            showClose: true,
-            duration: 3000,
-          });
-        }
-      } catch (error) {
-        // 处理错误
-        console.error(error);
-      }
-    },
-  },
+    }
+  }
 };
 </script>
 
-<style>
+<style scoped>
 .container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
+  display: flex;
+  align-items: flex-end;
 }
 
-.success-message {
-  background-color: green !important;
-  color: white !important;
+.select-option {
+  width: 200px;
+}
+
+.button-container {
+  margin-left: 20px;
+}
+
+.submit-button {
+  margin-top: 10px;
 }
 </style>

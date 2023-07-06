@@ -19,22 +19,16 @@
         <el-button type="text" size="mini" @click="copySerialNumbers">一键复制</el-button>
       </div>
       <div class="serial-numbers-container">
-        <el-tag
-            class="serial-number-box"
-            effect="plain"
-            size="medium"
-            v-for="(serialNumber, index) in serialNumbers"
-            :key="index"
-        >
-          {{ serialNumber }}
-        </el-tag>
+        <div class="serial-number-row" v-for="(serialNumber, index) in serialNumbers" :key="index">
+          <div class="serial-number-box">{{ serialNumber }}</div>
+        </div>
       </div>
     </el-card>
   </div>
 </template>
 
 <script>
-import { ElButton, ElInput, ElCard, ElForm, ElFormItem, ElMessage, ElTag } from 'element-plus';
+import { ElButton, ElInput, ElCard, ElForm, ElFormItem, ElMessage } from 'element-plus';
 
 export default {
   components: {
@@ -43,14 +37,12 @@ export default {
     ElCard,
     ElForm,
     ElFormItem,
-    ElTag,
   },
   data() {
     return {
       serialNumber: '',
       materialCode: '',
       serialNumbers: [],
-      itemsPerRow: 10, // 每行展示的序列号数量
     };
   },
   methods: {
@@ -75,10 +67,8 @@ export default {
       el.style.position = 'absolute';
       el.style.left = '-9999px';
       document.body.appendChild(el);
-
       el.select();
       document.execCommand('copy');
-
       document.body.removeChild(el);
       ElMessage.success('已复制序列号');
     },
@@ -86,21 +76,45 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.result-card {
+  margin-top: 10px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-title {
+  font-weight: bold;
+}
+
 .serial-numbers-container {
   display: flex;
   flex-wrap: wrap;
+  border: 1px solid #ccc;
+  padding: 10px;
+  gap: 10px;
+}
+
+.serial-number-row {
+  display: flex;
 }
 
 .serial-number-box {
-  background-color: #e6f7ff;
-  color: #1890ff;
-  border-color: #1890ff;
-  padding: 5px 10px;
-  margin-right: 10px;
+  border: 1px solid #ccc;
+  padding: 8px;
+  flex: 1;
   margin-bottom: 10px;
-  flex-basis: calc(100% / 10 - 10px); /* 设置每个序列号框的宽度 */
 }
 
-/* 其他自定义样式 */
+.search-form {
+  display: flex;
+}
+
+.search-item {
+  margin-right: 10px;
+}
 </style>
