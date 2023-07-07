@@ -53,7 +53,7 @@ import axios from "axios";
 export default {
   data() {
     return {
-      items: [{ remark: '', q1: '', q2: '' }],
+      items: [{remark: '', q1: '', q2: ''}],
       results: [],
     };
   },
@@ -87,7 +87,7 @@ export default {
     },
     addItem() {
       // 添加新行数据
-      this.items.push({ remark: '', q1: '', q2: '' });
+      this.items.push({remark: '', q1: '', q2: ''});
     },
     removeItem(index) {
       // 删除指定索引的数据项
@@ -96,17 +96,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.form-item {
-  margin-bottom: 10px;
-}
-
-.results {
-  margin-top: 20px;
-}
-
-.result {
-  margin-bottom: 5px;
-}
-</style>
