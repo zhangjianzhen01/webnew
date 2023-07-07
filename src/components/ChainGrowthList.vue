@@ -45,7 +45,7 @@ import axios from "axios";
 export default {
   data() {
     return {
-      items: [{ remark: "", q1: "", q2: "" }],
+      items: [{remark: "", q1: "", q2: ""}],
       results: [],
     };
   },
@@ -57,7 +57,7 @@ export default {
 
       // 构造请求数据
       this.items.forEach((item, index) => {
-        requestData[`a${index + 1}`] = { a: item.q1, b: item.q2 };
+        requestData[`a${index + 1}`] = {a: item.q1, b: item.q2};
       });
 
       // 发送请求计算结果
@@ -75,7 +75,7 @@ export default {
     },
     addItem() {
       // 添加新行数据
-      this.items.push({ remark: "", q1: "", q2: "" });
+      this.items.push({remark: "", q1: "", q2: ""});
     },
   },
 };
