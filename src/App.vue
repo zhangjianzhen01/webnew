@@ -1,65 +1,37 @@
 <template>
-  <div class="container">
-    <el-select v-model="selectedOption" placeholder="选择操作" class="select-option">
-      <el-option v-for="option in options" :key="option.id" :label="option.label" :value="option.id"></el-option>
-    </el-select>
-    <div class="button-container">
-      <el-button type="primary" @click="handleSubmit" class="submit-button">提交</el-button>
+  <div class="main-container">
+    <div class="left-container">
+      <SerialNumberList/>
+    </div>
+    <div class="right-container">
+      <NewOrderList/>
     </div>
   </div>
 </template>
 
-<script>
-import axios from "axios";
-import { ElSelect, ElOption, ElButton } from 'element-plus';
-
-export default {
-  name: "NewOrderSelect",
-  components: {
-    ElSelect,
-    ElOption,
-    ElButton
-  },
-  data() {
-    return {
-      options: [
-        { label: '新建采购订单', id: 1 },
-        { label: '新建资金平台', id: 2 },
-        { label: '新建销售订单', id: 3 }
-      ],
-      selectedOption: null
-    };
-  },
-  methods: {
-    handleSubmit() {
-      const body = { id: this.selectedOption };
-      axios.post('http://localhost:8000/api/xz', body)
-          .then(response => {
-            console.log(response.data);
-          })
-          .catch(error => {
-            console.error(error);
-          });
-    }
-  }
-};
-</script>
-
-<style scoped>
-.container {
-  display: flex;
-  align-items: flex-end;
+<style>
+.main-container {
+  display: flex; /* 展示为Flex布局 */
 }
 
-.select-option {
-  width: 200px;
+.left-container {
+  flex: 1; /* 左侧容器占据1份宽度 */
+  margin-right: 20px; /* 左侧容器与右侧容器之间的间距 */
 }
 
-.button-container {
-  margin-left: 20px;
-}
-
-.submit-button {
-  margin-top: 10px;
+.right-container {
+  flex: 2; /* 右侧容器占据2份宽度 */
 }
 </style>
+
+<script>
+import SerialNumberList from '@/components/SerialNumberList.vue';
+import NewOrderList from '@/components/NewOrderList.vue';
+
+export default {
+  components: {
+    SerialNumberList,
+    NewOrderList,
+  },
+};
+</script>
