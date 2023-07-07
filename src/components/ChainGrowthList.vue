@@ -22,6 +22,13 @@
           <el-input v-model="scope.row.q2" size="small"></el-input>
         </template>
       </el-table-column>
+      <!-- 添加删除按钮列 -->
+      <el-table-column label="操作">
+        <template v-slot="scope">
+          <!-- 使用作用域索引来获取对应的数据项索引 -->
+          <el-button type="danger" size="small" @click="removeItem(scope.$index)">删除</el-button>
+        </template>
+      </el-table-column>
       <!-- 添加结果列 -->
       <el-table-column label="结果">
         <template v-slot="scope">
@@ -39,30 +46,35 @@
   </div>
 </template>
 
+
 <script>
 import axios from "axios";
 
 export default {
   data() {
     return {
-      items: [{remark: "", q1: "", q2: ""}],
+      items: [{ remark: '', q1: '', q2: '' }],
       results: [],
     };
   },
   methods: {
     submitForm() {
-      this.results = []; // 清空上次的计算结果
-
-      const requestData = {};
-
-      // 构造请求数据
-      this.items.forEach((item, index) => {
-        requestData[`a${index + 1}`] = {a: item.q1, b: item.q2};
-      });
+      // 验证表单数据
+      for (let i = 0; i < this.items.length; i++) {
+        const item = this.items[i];
+        if (item.q1.trim() === '' || item.q2.trim() === '') {
+          this.$message.warning(`第 ${i + 1} 行不能为空`);
+          return; // 如果 q1 或 q2 为空，则停止表单提交
+        }
+      }
 
       // 发送请求计算结果
+      const requestData = {
+        items: this.items,
+      };
+
       axios
-          .post("http://localhost:8000/api/hb", requestData)
+          .post('http://localhost:8000/api/hb', requestData)
           .then((response) => {
             const results = response.data.results;
             if (results) {
@@ -75,8 +87,26 @@ export default {
     },
     addItem() {
       // 添加新行数据
-      this.items.push({remark: "", q1: "", q2: ""});
+      this.items.push({ remark: '', q1: '', q2: '' });
+    },
+    removeItem(index) {
+      // 删除指定索引的数据项
+      this.items.splice(index, 1);
     },
   },
 };
 </script>
+
+<style scoped>
+.form-item {
+  margin-bottom: 10px;
+}
+
+.results {
+  margin-top: 20px;
+}
+
+.result {
+  margin-bottom: 5px;
+}
+</style>
