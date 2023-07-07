@@ -11,7 +11,7 @@
 
 <script>
 import axios from "axios";
-import { ElSelect, ElOption, ElButton, ElMessage } from 'element-plus';
+import {ElSelect, ElOption, ElButton, ElMessage} from 'element-plus';
 
 export default {
   name: "NewOrderSelect",
@@ -23,16 +23,16 @@ export default {
   data() {
     return {
       options: [
-        { label: '新建采购订单', id: 1 },
-        { label: '新建资金平台', id: 2 },
-        { label: '新建销售订单', id: 3 }
+        {label: '新建采购订单', id: 1},
+        {label: '新建资金平台', id: 2},
+        {label: '新建销售订单', id: 3}
       ],
       selectedOption: null
     };
   },
   methods: {
     handleSubmit() {
-      const body = { id: this.selectedOption };
+      const body = {id: this.selectedOption};
       axios.post('http://localhost:8000/api/xz', body)
           .then(response => {
             console.log(response.data);

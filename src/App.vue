@@ -1,10 +1,7 @@
 <template>
   <div class="main-container">
     <div class="left-container">
-      <SerialNumberList/>
-    </div>
-    <div class="right-container">
-      <NewOrderList/>
+      <ChainGrowthList/>
     </div>
   </div>
 </template>
@@ -19,19 +16,17 @@
   margin-right: 20px; /* 左侧容器与右侧容器之间的间距 */
 }
 
-.right-container {
-  flex: 2; /* 右侧容器占据2份宽度 */
+{
+  flex: 3; /* 右侧容器占据2份宽度 */
 }
 </style>
 
 <script>
-import SerialNumberList from '@/components/SerialNumberList.vue';
-import NewOrderList from '@/components/NewOrderList.vue';
+import ChainGrowthList from '@/components/ChainGrowthList.vue';
 
 export default {
   components: {
-    SerialNumberList,
-    NewOrderList,
+    ChainGrowthList,
   },
 };
 </script>

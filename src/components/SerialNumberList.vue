@@ -17,7 +17,9 @@
       <div class="serial-numbers-container">
         <div class="serial-number-row" v-for="(serialNumberGroup, index) in serialNumberGroups" :key="index">
           <div class="serial-number-group">
-            <div class="serial-number-box" v-for="(serialNumber, innerIndex) in serialNumberGroup" :key="innerIndex">{{ serialNumber }}</div>
+            <div class="serial-number-box" v-for="(serialNumber, innerIndex) in serialNumberGroup" :key="innerIndex">
+              {{ serialNumber }}
+            </div>
           </div>
         </div>
       </div>
@@ -26,7 +28,7 @@
 </template>
 
 <script>
-import { ElButton, ElInput, ElCard, ElForm, ElFormItem, ElMessage } from 'element-plus';
+import {ElButton, ElInput, ElCard, ElForm, ElFormItem, ElMessage} from 'element-plus';
 
 export default {
   components: {
