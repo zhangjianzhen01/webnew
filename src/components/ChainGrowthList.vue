@@ -11,13 +11,13 @@
         </template>
       </el-table-column>
       <!-- 添加 Q1 列 -->
-      <el-table-column label="Q1" prop="q1">
+      <el-table-column label="Q1季度" prop="q1">
         <template v-slot="scope">
           <el-input v-model="scope.row.q1" size="small"></el-input>
         </template>
       </el-table-column>
       <!-- 添加 Q2 列 -->
-      <el-table-column label="Q2" prop="q2">
+      <el-table-column label="Q2季度" prop="q2">
         <template v-slot="scope">
           <el-input v-model="scope.row.q2" size="small"></el-input>
         </template>
