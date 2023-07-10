@@ -1,51 +1,64 @@
 <template>
-  <div>
-    <!-- 使用 Element Plus Button 组件来美化按钮样式，并添加自定义的 class -->
-    <el-button @click="goToChainGrowthList" type="primary" class="custom-button">环比增长计算</el-button>
-
-    <el-button @click="goToSerialNumberList" type="success" class="custom-button">序列号查询</el-button>
-
-    <el-button @click="goToNewOrderList" type="primary" class="custom-button">新建单据</el-button>
-
-    <router-view></router-view>
+  <div class="app-container">
+    <sidebar-menu>
+      <el-menu-item index="1" @click="handleMenuItemClick(1)">
+        <i class="el-icon-menu"></i>
+        <span class="menu-text">环比增长计算</span>
+      </el-menu-item>
+      <el-menu-item index="2" @click="handleMenuItemClick(2)">
+        <i class="el-icon-menu"></i>
+        <span class="menu-text">序列号查询</span>
+      </el-menu-item>
+      <el-menu-item index="3" @click="handleMenuItemClick(3)">
+        <i class="el-icon-menu"></i>
+        <span class="menu-text">新建单据</span>
+      </el-menu-item>
+    </sidebar-menu>
+    <div class="content">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
 <script>
-import {defineComponent} from "vue";
-import {useRouter} from "vue-router";
+import { defineComponent } from "vue";
+import SidebarMenu from "./components/SidebarMenu.vue";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   name: "App",
+  components: {
+    SidebarMenu,
+  },
   setup() {
     const router = useRouter();
 
-    // 跳转到 ChainGrowthList 组件
-    const goToChainGrowthList = () => {
-      router.push("/component-a");
-    };
-
-    // 跳转到 SerialNumberList 组件
-    const goToSerialNumberList = () => {
-      router.push("/component-b");
-    };
-
-    // 跳转到 NewOrderList 组件
-    const goToNewOrderList = () => {
-      router.push("/component-c");
+    const handleMenuItemClick = (index) => {
+      if (index === 1) {
+        router.push("js");
+      } else if (index === 2) {
+        router.push("/cx");
+      } else if (index === 3) {
+        router.push("/xz");
+      }
     };
 
     return {
-      goToChainGrowthList,
-      goToSerialNumberList,
-      goToNewOrderList
+      handleMenuItemClick,
     };
   },
 });
 </script>
 
 <style>
-.custom-button {
-  margin-bottom: 10px; /* 添加按钮之间的底部边距 */
+.app-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+.content {
+  flex: 1;
+  padding: 20px;
+  width: 80%; /* 调整为适当的数值或百分比 */
 }
 </style>

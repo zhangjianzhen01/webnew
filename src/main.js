@@ -14,9 +14,9 @@ const router = createRouter({
     history: createWebHistory(),
     //定义路由和路由引用的组件
     routes: [
-        {path: '/component-a', component: ChainGrowthList},
-        {path: '/component-b', component: SerialNumberList},
-        {path: '/component-c', component: NewOrderList},
+        {path: '/js', component: ChainGrowthList},
+        {path: '/cx', component: SerialNumberList},
+        {path: '/xz', component: NewOrderList},
     ],
 });
 
