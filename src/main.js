@@ -1,4 +1,4 @@
-//主路由配置
+//------主路由配置-------
 import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';

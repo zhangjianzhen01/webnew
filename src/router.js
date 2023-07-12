@@ -1,4 +1,4 @@
-//副路由配置
+//--------副路由配置------------
 import { createRouter, createWebHistory } from "vue-router";
 //引入vue组件
 import ChainGrowthList from './components/ChainGrowthList.vue';
