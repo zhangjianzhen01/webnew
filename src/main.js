@@ -1,26 +1,10 @@
-import {createApp} from 'vue';
-import {createRouter, createWebHistory} from "vue-router";
+//主路由配置
+import { createApp } from 'vue';
 import App from './App.vue';
+import router from './router';
 import ElementPlus from 'element-plus';
 import 'element-plus/theme-chalk/index.css';
 
-// 导入组件
-import ChainGrowthList from './components/ChainGrowthList.vue';
-import SerialNumberList from './components/SerialNumberList.vue';
-import NewOrderList from './components/NewOrderList.vue'
-
-// 创建路由实例并配置路由规则
-const router = createRouter({
-    history: createWebHistory(),
-    //定义路由和路由引用的组件
-    routes: [
-        {path: '/js', component: ChainGrowthList},
-        {path: '/cx', component: SerialNumberList},
-        {path: '/xz', component: NewOrderList},
-    ],
-});
-
-// 创建Vue应用实例
 const app = createApp(App);
 
 // 将路由实例注册到应用实例中

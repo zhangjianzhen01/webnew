@@ -32,7 +32,7 @@ export default defineComponent({
   },
   setup() {
     const router = useRouter();
-
+//配置路由跳转
     const handleMenuItemClick = (index) => {
       if (index === 1) {
         router.push("js");
