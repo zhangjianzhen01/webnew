@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import ChainGrowthList from './components/ChainGrowthList.vue';
 import SerialNumberList from './components/SerialNumberList.vue';
 import NewOrderList from './components/NewOrderList.vue';
+import NewTiDi from './components/NewTiDi.vue';
 
 // 创建路由实例并配置路由规则
 const router = createRouter({
@@ -13,6 +14,7 @@ const router = createRouter({
         { path: '/js', component: ChainGrowthList },
         { path: '/cx', component: SerialNumberList },
         { path: '/xz', component: NewOrderList },
+        { path: '/qx', component: NewTiDi },
     ],
 });
 

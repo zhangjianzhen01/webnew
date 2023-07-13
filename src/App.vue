@@ -13,6 +13,10 @@
         <i class="el-icon-menu"></i>
         <span class="menu-text">新建单据</span>
       </el-menu-item>
+      <el-menu-item index="4" @click="handleMenuItemClick(4)">
+        <i class="el-icon-menu"></i>
+        <span class="menu-text">权限ID对比</span>
+      </el-menu-item>
     </sidebar-menu>
     <div class="content">
       <router-view></router-view>
@@ -40,6 +44,8 @@ export default defineComponent({
         router.push("/cx");
       } else if (index === 3) {
         router.push("/xz");
+      } else if (index === 4) {
+        router.push("/qx");
       }
     };
 
