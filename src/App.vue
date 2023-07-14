@@ -25,9 +25,9 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
+import {defineComponent} from "vue";
 import SidebarMenu from "./components/SidebarMenu.vue";
-import { useRouter } from "vue-router";
+import {useRouter} from "vue-router";
 
 export default defineComponent({
   name: "App",
@@ -39,13 +39,13 @@ export default defineComponent({
 //配置路由跳转
     const handleMenuItemClick = (index) => {
       if (index === 1) {
-        router.push("js");
+        router.push("js_hb");
       } else if (index === 2) {
-        router.push("/cx");
+        router.push("/cx_xlh");
       } else if (index === 3) {
-        router.push("/xz");
+        router.push("/Added");
       } else if (index === 4) {
-        router.push("/qx");
+        router.push("/cx_qx");
       }
     };
 
@@ -62,6 +62,7 @@ export default defineComponent({
   height: 100vh;
   overflow: hidden;
 }
+
 .content {
   flex: 1;
   padding: 20px;

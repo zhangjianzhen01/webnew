@@ -25,7 +25,8 @@ export default {
       options: [
         {label: '新建采购订单', id: 1},
         {label: '新建资金平台', id: 2},
-        {label: '新建销售订单', id: 3}
+        {label: '新建销售订单', id: 3},
+        {label: '新建客户', id: 4}
       ],
       selectedOption: null
     };

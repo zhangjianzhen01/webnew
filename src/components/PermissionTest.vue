@@ -5,7 +5,16 @@
         <el-input v-model="nickname" placeholder="请输入姓名" />
       </el-col>
       <el-col :span="6" style="margin-left: 10px;">
-        <el-button @click="search">搜索</el-button>
+        <el-button @click="searchByNickname">搜索姓名</el-button>
+      </el-col>
+    </el-row>
+
+    <el-row style="margin-top: 10px;">
+      <el-col :span="6">
+        <el-input v-model="businessSn" placeholder="请输入商机编号" />
+      </el-col>
+      <el-col :span="6" style="margin-left: 10px;">
+        <el-button @click="searchByBusinessSn">搜索商机编号</el-button>
       </el-col>
     </el-row>
 
@@ -36,18 +45,29 @@
 export default {
   data() {
     return {
-      nickname: '', // Stores the user's search input
+      nickname: '', // Stores the user's search input for name
+      businessSn: '', // Stores the user's search input for business sn
       result: [] // Stores the retrieved results
     }
   },
   methods: {
-    search() {
+    searchByNickname() {
       const requestData = {
         nickname: this.nickname
       };
 
+      this.search('http://127.0.0.1:8000/api/user', requestData);
+    },
+    searchByBusinessSn() {
+      const requestData = {
+        business_sn: this.businessSn
+      };
+
+      this.search('http://127.0.0.1:8000/api/wo', requestData);
+    },
+    search(url, requestData) {
       // Send a POST request to the server
-      fetch('http://127.0.0.1:8000/api/user', {
+      fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -57,9 +77,9 @@ export default {
           .then(response => response.json())
           .then(data => {
             this.result = [{
-              nickname: this.nickname,
-              zsljId: data.zslj_id,
-              yydnId: data.yydn_id
+              nickname: this.nickname || '',
+              zsljId: data.zslj_id || '',
+              yydnId: data.yydn_id || ''
             }];
           })
           .catch(error => {
