@@ -27,7 +27,7 @@
         <div class="grid-table-col">商机编号</div>
         <div class="grid-table-col">运营大脑ID</div>
       </div>
-      <div v-for="row in resqlllult" :key="row.nickname" class="grid-table-row">
+      <div v-for="row in result" :key="row.nickname" class="grid-table-row">
         <div class="grid-table-col">{{ row.nickname }}</div>
         <div class="grid-table-col">{{ row.zsljId }}</div>
         <div class="grid-table-col">{{ row.businessSn }}</div>
