@@ -62,9 +62,9 @@ export default {
       let apiUrl = "";
 
       if (this.businessSn) {
-        apiUrl = "http://127.0.0.1:8000/api/wo"; // 替换为实际的商机接口地址
+        apiUrl = "http://127.0.0.1:9000/api/wo"; // 替换为实际的商机接口地址
       } else {
-        apiUrl = "http://127.0.0.1:8000/api/user"; // 替换为实际的用户接口地址
+        apiUrl = "http://127.0.0.1:9000/api/user"; // 替换为实际的用户接口地址
       }
 
       const requestData = {

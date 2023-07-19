@@ -63,7 +63,7 @@ export default {
 
       try {
         const materialCodeWithSlash = this.materialCode + '/';
-        const response = await fetch(`http://localhost:8000/api/cx/${materialCodeWithSlash}`);
+        const response = await fetch(`http://127.0.0.1:9000/api/cx/${materialCodeWithSlash}`);
         const data = await response.json();
         this.serialNumbers = data.serialNumbers;
         if (this.serialNumbers.length === 0) {

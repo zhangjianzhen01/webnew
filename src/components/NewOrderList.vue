@@ -34,7 +34,7 @@ export default {
   methods: {
     handleSubmit() {
       const body = {id: this.selectedOption};
-      axios.post('http://localhost:8000/api/xz', body)
+      axios.post('http://127.0.0.1:9000/api/xz', body)
           .then(response => {
             console.log(response.data);
             this.showSuccessMessage(response.data);

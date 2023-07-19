@@ -74,7 +74,7 @@ export default {
       };
 
       axios
-          .post('http://localhost:8000/api/hb', requestData)
+          .post('http://127.0.0.1:9000/api/hb', requestData)
           .then((response) => {
             const results = response.data.results;
             if (results) {
